@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@Html.AntiForgeryToken()
+
+<div class="container">
+    <form id="frm-cadastrar" action="Cadastrar" method="post">
+        <div class="panel-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <span class="text-tittle-page">Cadastro de Usuário</span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btn-limpar" class="btn btn-outline-secondary">Limpar</button>
+                    <button type="button" id="btn-salvar" class="btn btn-outline-success">Salvar</button>
+                </div>
+            </div>
+            <hr />
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">*Nome:</label>
+                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required />
+
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">*Sobrenome:</label>
+                            <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Telefone:</label>
+                            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">*Celular:</label>
+                            <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="especie">Link para Facebook:</label>
+                            <input type="text" id="linkRedeSocial" name="linkRedeSocial" class="form-control" placeholder="Cole o link de seu Facebook" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="especie">*E-mail:</label>
+                            <input type="text" id="email" name="email" class="form-control" placeholder="E-mail" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">*Senha:</label>
+                            <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">*Confirme a Senha:</label>
+                            <input type="password" id="confirmacaoSenha" name="confirmacaoSenha" class="form-control" placeholder="Senha" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<script src="~/Content/js/Usuario/Cadastro.js"></script>
+

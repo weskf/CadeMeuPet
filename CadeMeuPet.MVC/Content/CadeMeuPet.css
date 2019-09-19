@@ -1,0 +1,77 @@
+﻿.text-home{
+
+    font-family: 'Showcard Gothic';
+    font-size:25px;
+    color: black;
+}
+
+.home-background {
+    background-color: #3c763d;
+    border-radius: 10px;
+    height:100%
+}
+
+.img-banner{
+   width:100%;
+   margin-left:9%;
+   margin-top:2px;
+}
+
+.navbar-menu {
+    background-color: #3c763d;
+    color: white;
+    font-family: 'Comic Sans MS';
+    letter-spacing: 2px;
+}
+
+.nav-link-menu {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: white;
+
+
+}
+
+.nav-link-menu:hover, nav-link-menu:focus {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.img-border {
+    border:5px; 
+    border-radius:10px; 
+    border-style:solid; 
+    border-color:black;
+}
+
+.row{
+    margin-top:10px;
+}
+
+.btn-cadastro{
+    width:150px;
+}
+
+.text-tittle-page{
+    font-size: 26px;
+    font-family: 'Gill Sans MT';
+    color: forestgreen;
+    text-align: left;
+}
+
+.a-link{
+    text-decoration:none;
+}
+
+.w-img {
+    width: 500px !important;
+    height: 250px !important;
+}

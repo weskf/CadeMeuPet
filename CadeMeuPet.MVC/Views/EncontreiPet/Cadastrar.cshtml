@@ -1,0 +1,173 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <form id="frm-cadastrar" action="Cadastrar" method="post">
+        <div class="panel-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <span class="text-tittle-page">Cadastro de Pet Encontrado</span>
+                </div>
+            </div>
+            <hr />
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Estado:</label>
+                            @Html.DropDownList("Estado", null, "Selecione", htmlAttributes: new { @id = "Estado", @required = "required", @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Cidade:</label>
+                            <select id="Cidade" class="form-control">
+                                <option selected="selected" value="">Cidade</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Bairro:</label>
+                            <input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label" for="especie">Logradouro:</label>
+                            <input type="text" id="logradouro" name="logradouro" class="form-control" placeholder="Logradouro" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Data que foi encontrado:</label>
+                            <input type="date" id="data-localizacao" name="data-localizacao" class="form-control" placeholder="Logradouro" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Espécie:</label>
+                            @Html.DropDownList("Especie", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Raça:</label>
+                            <select id="Raca" class="form-control">
+                                <option selected="selected" value="">Raça</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Cor:</label>
+                            @Html.DropDownList("Cor", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Porte:</label>
+                            @Html.DropDownList("Porte", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label class="control-label" for="especie">Possui identificação ?</label>
+                            @Html.DropDownList("Identificacao", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label" for="especie">Característica:</label>
+                            <input type="text" id="característica" name="característica" class="form-control" placeholder="Digite alguma característica do animal" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <input hidden="hidden" id="AnimalId" name="AnimalId" value="@ViewBag.AnimalId"/>
+                <button type="button" id="btn-salvar" class="btn btn-outline-success">Anexar Imagens</button>
+            </div>
+        </div>
+        <div id="fileUpload" hidden="hidden">
+            <hr />
+            <span class="font-weight-bold">Inclua até 5 imagens do Pet encontrado</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input file" id="file01" name="file01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01" id="inputGroupFile01">Escolha os arquivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input file" id="file02" name="file02" aria-describedby="inputGroupFileAddon02">
+                        <label class="custom-file-label" for="inputGroupFile02" id="inputGroupFile02">Escolha os arquivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input file" id="file03" name="file03" aria-describedby="inputGroupFileAddon03">
+                        <label class="custom-file-label" for="inputGroupFile03" id="inputGroupFile03">Escolha os arquivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input file" id="file04" name="file04" aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputGroupFile04" id="inputGroupFile04">Escolha os arquivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input file" id="file05" name="file05" aria-describedby="inputGroupFileAddon05">
+                        <label class="custom-file-label" for="inputGroupFile05" id="inputGroupFile05">Escolha os arquivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="button" value="Concluir" id="inputFile" class="btn btn-outline-primary" />        
+                </div>
+            </div>
+        </div>
+        <hr />
+    </form>
+</div>
+
+    <script src="~/Content/js/Animal/EncontreiPet.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#dropArea").filedrop({
+                url: '@Url.Action("UploadFiles")',
+                allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
+                allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
+                paramname: 'files',
+                maxfiles: 5,
+                maxfilesize: 5,
+                dragOver: function () {
+                    $('#dropArea').addClass('active-group');
+                },
+                dragLeave: function () {
+                    $("#dropArea").removeClass('active-drop');
+                },
+                drop: function () {
+                    $("#dropArea").removeClass('active-drop');
+                },
+                afterAll: function (e) {
+                    $("#dropArea").html('Arquivos carregados com sucesso.');
+                },
+                uploadFinished: function (i, file, response, time) {
+                    $('#imgAnexas').removeAttr('hidden', 'hidden');
+                    $('#uploadList').append('<li class="list-group-item">' + file.name + '</li>');
+                }
+            })
+        })
+    </script>

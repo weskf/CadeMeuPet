@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Cadê Meu Pet ?</title>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.filedrop.js"></script> 
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CadeMeuPet.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-menu">
+        <div class="navbar-header">
+            <a href="/Home/Index">
+                <img style="max-width:150px;" src="~/Imagens/home/logo-banner.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                |<a class="nav-item nav-link-menu" href="/EncontreiPet/Index"> Encontrei um Pet</a>|
+                |<a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">Perdi meu Pet</a>|
+                |<a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">Contato</a>|
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-menu">
+            <li>
+                <a class="nav-item nav-link-menu" href="#" nav-item nav-link-menu>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="glyphicon">Olá </span>
+                        @Html.Encode(User.Identity.Name);
+                    }
+                    else
+                    {
+                        <span class="glyphicon">Login </span>
+                    }
+                </a>
+            </li>
+            <li><a class="nav-item nav-link-menu" href="@Url.Action("Logout","Account")"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <br />
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    
+    
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>
