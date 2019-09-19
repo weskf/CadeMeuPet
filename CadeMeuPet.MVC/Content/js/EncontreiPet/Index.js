@@ -25,7 +25,7 @@ function ClickImg(obj) {
     });
 };
 
-//teste
+//teste de atualização
 function EditarCadastroPet(_AnimalId) {
 
     window.location.href = "/EncontreiPet/Editar?AnimalId="+_AnimalId;
