@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CadeMeuPet.Domain.Entities
 {
@@ -10,6 +11,8 @@ namespace CadeMeuPet.Domain.Entities
         public int CidadeId { get; set; }
         public string Bairro { get; set; }
         public string Logradouro { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DataLocalizacao { get; set; }
 
         public virtual Estado Estado { get; set; }

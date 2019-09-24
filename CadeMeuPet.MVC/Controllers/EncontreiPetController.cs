@@ -70,7 +70,7 @@ namespace CadeMeuPet.MVC.Controllers
             var config = new MapperConfiguration(c => c.CreateMap<Animal, AnimalViewModel>());
             IMapper iMapper = config.CreateMapper();
 
-            var animalViewModel = iMapper.Map<Animal, AnimalViewModel>(objAnimal);
+            var animalViewModel = iMapper.Map<Animal, AnimalViewModel> (objAnimal);
 
             return View(animalViewModel);
         }
