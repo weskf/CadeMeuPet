@@ -53,9 +53,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Raça:</label>
-                            <select id="Raca" class="form-control">
-                                <option selected="selected" value="">Raça</option>
-                            </select>
+                            @Html.DropDownListFor(model => model.RacaAnimalId, new SelectList(Model.RacaList, "RacaAnimalId", "Raca", Model.RacaAnimalId), "Selecione", htmlAttributes: new { @id = "Especie", @required = "required", @class = "form-control" })
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Cor:</label>
@@ -63,13 +61,13 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Porte:</label>
-                            @Html.DropDownListFor(model => model.PorteAnimalId, new SelectList(Model.EspecieList, "PorteAnimalId", "Porte", Model.PorteAnimalId), "Selecione", htmlAttributes: new { @id = "Porte", @required = "required", @class = "form-control" })
+                            @Html.DropDownListFor(model => model.PorteAnimalId, new SelectList(Model.PorteList, "PorteAnimalId", "Porte", Model.PorteAnimalId), "Selecione", htmlAttributes: new { @id = "Porte", @required = "required", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Possui identificação ?</label>
-                            @Html.DropDownList("Identificacao", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                            @Html.DropDownListFor(model => model.Identificacao, new SelectList(Model.IdentificacaoList, "Value", "Text", Model.Identificacao), "Selecione", htmlAttributes: new { @id = "Porte", @required = "required", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-row">
@@ -78,17 +76,31 @@
                             <input type="text" id="característica" name="característica" value="@Model.Caracteristica" class="form-control" placeholder="Digite alguma característica do animal" />
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="col-md-3">
+                            <input type="checkbox" id="ativo" name="ativo" checked="@Model.Ativo">
+                            <label class="control-label" for="especie">Ativo</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-md-12">
-                <input hidden="hidden" id="AnimalId" name="AnimalId" value="@ViewBag.AnimalId" />
-                <button type="button" id="btn-salvar" class="btn btn-outline-success">Anexar Imagens</button>
-            </div>
+            <table>
+                <tr>
+                    @foreach(var fotos in Model.FotosList)
+                    {
+                        <td style="max-width: 200px; max-height: 200px">
+                            <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId">
+                            <button type="button" id="excluir" name="excluir" class="btn btn-danger">Excluir</button>
+                        </td>
+                    }
+                </tr>
+            </table>
         </div>
-        <div id="fileUpload" hidden="hidden">
+        <hr />
+        <div id="fileUpload">
             <hr />
             <span class="font-weight-bold">Inclua até 5 imagens do Pet encontrado</span>
             <div class="row">
@@ -138,6 +150,8 @@
             </div>
         </div>
         <hr />
+        
+
     </form>
 </div>
 

@@ -11,12 +11,13 @@ namespace CadeMeuPet.Domain.Entities
         public int RacaAnimalId { get; set; }
         public int CorAnimalId { get; set; }
         public int PorteAnimalId { get; set; }
-        public bool Identificacao { get; set; }
+        public string Identificacao { get; set; }
         public string Caracteristica { get; set; }
         public int UsuarioId { get; set; }
         public int LocalizacaoId { get; set; }
         public int FotoId { get; set; }
-        
+        public bool Ativo { get; set; }
+
         public virtual EspecieAnimal Especies { get; set; }
         public virtual RacaAnimal Racas { get; set; }
         public virtual CorAnimal Cores { get; set; }

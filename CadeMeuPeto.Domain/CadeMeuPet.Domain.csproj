@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Componente\AnimalComponent.cs" />
     <Compile Include="Entities\Animal.cs" />
     <Compile Include="Entities\Fotos.cs" />
     <Compile Include="Entities\Localizacao.cs" />

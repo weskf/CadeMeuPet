@@ -36,7 +36,7 @@ namespace CadeMeuPet.Domain.Services
         {
             Usuario objUsuario = new Usuario();
             objUsuario = _UsuarioRepository.GetAll().Where(x => x.UsuarioId == usuarioId).FirstOrDefault();
-            List<Animal> ListAnimal = objUsuario.Animais.ToList();
+            List<Animal> ListAnimal = objUsuario.Animais.Where(x => x.Ativo == true).ToList();
 
             return ListAnimal;
             

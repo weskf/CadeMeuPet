@@ -24,27 +24,31 @@
                 <table id="table-animais" class="table-responsive">
                     <thead>
                         <tr>
-                            @if (Model.ToList().Count > 0)
+                            @if(Model.ToList().Count > 0)
                             {
-                                foreach (var animal in Model.Where(x => x.Fotos.Count > 0))
+                                foreach(var animal in Model.Where(x => x.Fotos.Count > 0))
                                 {
                                     var i = 0;
-                                    <td style="max-width: 200px" class="animal-td">
+                                    <td style="max-width: 200px; max-height: 200px" class="animal-td">
+                                        <button type="button" id="btnExcluir_@animal.AnimalId" name="btnExcluir_@animal.AnimalId" class="btn btn-sm btn-outline-danger" onclick="ExcluirCadastroPet(this);">Excluir</button>
+                                        <button type="button" id="btnEditar_@animal.AnimalId" name="btnEditar_@animal.AnimalId" class="btn btn-sm btn-outline-warning" onclick="EditarCadastroPet(this);">Editar</button>
                                         <div id="carouselId_@animal.AnimalId" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner">
-                                                @foreach (var fotos in animal.Fotos)
+                                                @foreach(var fotos in animal.Fotos)
                                                 {
-                                                    if (i == 0)
+                                                    if(i == 0)
                                                     {
                                                         <div class="carousel-item w-img active">
-                                                            <img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId" onclick="ClickImg(this)">
+                                                            @*<img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId" onclick="ClickImg(this)">*@
+                                                            <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId">
                                                         </div>
                                                         i++;
                                                     }
                                                     else
                                                     {
                                                         <div class="carousel-item w-img">
-                                                            <img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId" onclick="ClickImg(this)">
+                                                            @*<img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId" onclick="ClickImg(this)">*@
+                                                            <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId">
                                                         </div>
                                                         i++;
                                                     }
@@ -59,52 +63,13 @@
                                                 <span class="sr-only">Próximo</span>
                                             </a>
                                         </div>
+
                                     </td>
                                 }
                             }
                         </tr>
                     </thead>
                 </table>
-                @*@if (Model.ToList().Count > 0)
-                {
-                    foreach (var animal in Model.Where(x => x.Fotos.Count > 0))
-                    {
-                        var i = 0;
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <div id="carouselId_@animal.AnimalId" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        @foreach (var fotos in animal.Fotos)
-                                        {
-                                            if (i == 0)
-                                            {
-                                                <div class="carousel-item w-img active">
-                                                    <img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto">
-                                                </div>
-                                                i++;
-                                            }
-                                            else
-                                            {
-                                                <div class="carousel-item w-img">
-                                                    <img class="d-block w-100 img-thumbnail" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto">
-                                                </div>
-                                                i++;
-                                            }
-                                        }
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselId_@animal.AnimalId" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Anterior</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselId_@animal.AnimalId" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Próximo</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                 }*@
             </div>
         </div>
     </div>

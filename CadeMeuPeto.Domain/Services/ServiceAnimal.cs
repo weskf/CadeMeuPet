@@ -1,6 +1,7 @@
 ﻿using CadeMeuPet.Domain.Entities;
 using CadeMeuPet.Domain.Interfaces;
 using CadeMeuPet.Domain.Interfaces.Services;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CadeMeuPet.Domain.Services
@@ -14,7 +15,7 @@ namespace CadeMeuPet.Domain.Services
             _AnimalRepository = AnimalRepository;
         }
 
-        public Animal CadastrarAnimal(Animal objAnimal)
+        public Animal CadastrarPet(Animal objAnimal)
         {
             _AnimalRepository.Add(objAnimal);
 
@@ -22,6 +23,14 @@ namespace CadeMeuPet.Domain.Services
                                     .Where(_ => _.UsuarioId == objAnimal.UsuarioId)
                                     .OrderByDescending(_ => _.AnimalId)
                                     .FirstOrDefault();
+        }
+
+        public void ExcluirPet(int AnimalId)
+        {
+            Animal objAnimal = new Animal();
+            objAnimal = _AnimalRepository.GetById(AnimalId);
+            objAnimal.Ativo = false;
+            _AnimalRepository.Update(objAnimal);
         }
     }
 }

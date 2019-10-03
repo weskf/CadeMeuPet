@@ -4,6 +4,7 @@ namespace CadeMeuPet.Domain.Interfaces.Services
 {
     public interface IServiceAnimal : IServiceBase<Animal>
     {
-        Animal CadastrarAnimal(Animal objAnimal);
+        Animal CadastrarPet(Animal objAnimal);
+        void ExcluirPet(int AnimalId);
     }
 }

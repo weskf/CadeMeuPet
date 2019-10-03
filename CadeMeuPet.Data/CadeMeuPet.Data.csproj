@@ -127,6 +127,14 @@
     <Compile Include="Migrations\201909082326262_alter_tab_animal_08092019.Designer.cs">
       <DependentUpon>201909082326262_alter_tab_animal_08092019.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909281552464_alter_tab_animal_28092019.cs" />
+    <Compile Include="Migrations\201909281552464_alter_tab_animal_28092019.Designer.cs">
+      <DependentUpon>201909281552464_alter_tab_animal_28092019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909281607444_alter_tab_animal_28092019_2.cs" />
+    <Compile Include="Migrations\201909281607444_alter_tab_animal_28092019_2.Designer.cs">
+      <DependentUpon>201909281607444_alter_tab_animal_28092019_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAnimal.cs" />
@@ -190,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909082326262_alter_tab_animal_08092019.resx">
       <DependentUpon>201909082326262_alter_tab_animal_08092019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281552464_alter_tab_animal_28092019.resx">
+      <DependentUpon>201909281552464_alter_tab_animal_28092019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281607444_alter_tab_animal_28092019_2.resx">
+      <DependentUpon>201909281607444_alter_tab_animal_28092019_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

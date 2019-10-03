@@ -117,7 +117,8 @@ function CriarObjetoAnimal() {
         PorteAnimalId: $("#Porte").val(),
         Identificacao: $("#identificacao").val(),
         Caracteristica: $("#característica").val(),
-        Localizacao: objLocalizacao
+        Localizacao: objLocalizacao,
+        Ativo: true
     }
 
     return obj;
