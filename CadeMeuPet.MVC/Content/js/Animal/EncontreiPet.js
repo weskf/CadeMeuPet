@@ -40,6 +40,7 @@ function UploadFiles() {
     var file;
     var imagensAnexadas = 0;
 
+
     var fileData = new FormData();
     for (var i = 0; i < Countfiles.length; i++) {
         file = Countfiles.get(i).files;
@@ -145,6 +146,44 @@ function SalvarCadastro() {
     });
 }
 
+function SalvarEdicaoPet() {
+
+    var obj = CriarObjetoAnimal();
+
+    var Countfiles = $(".file");
+    var file;
+    var imagensAnexadas = 0;
+
+    for (var i = 0; i < Countfiles.length; i++) {
+        file = Countfiles.get(i).files;
+        if (file.length != 0) {
+            imagensAnexadas++;
+        }
+    }
+
+    $.ajax({
+        url: "/EncontreiPet/Editar",
+        type: 'POST',
+        dataType: "json",
+        async: false,
+        data: { animalViewModel: obj },
+        success: function (resultado) {
+            if (resultado.retorno == "sucesso") {
+                if (imagensAnexadas > 0) {
+                    UploadFiles();
+                }
+                else {
+                    bootbox.alert(resultado.msgRetorno);
+                    window.location.href = "/EncontreiPet/Index";
+                }
+             }
+            else {
+                bootbox.alert(resultado.msgRetorno);
+            }
+        }
+    });
+}
+
 function PreencheNomeArquivoUpload() {
 
     var input01 = document.getElementById("file01");
@@ -199,6 +238,10 @@ $(document).ready(function () {
 
     $("#btn-salvar").click(function () {
         SalvarCadastro();
+    });
+
+    $("#btn-Editar").click(function () {
+        SalvarEdicaoPet();
     });
 
     $("#btn-anexar").click(function () {

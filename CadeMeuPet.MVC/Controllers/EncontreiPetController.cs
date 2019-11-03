@@ -28,6 +28,7 @@ namespace CadeMeuPet.MVC.Controllers
         private readonly IServiceFotos _FotosService;
         private AnimalComponent _AnimalComponent;
         private UrlPath _UrlPath;
+        private MapperUtil _Mapper;
         public EncontreiPetController(IServiceEspecieAnimal especieService,
                                       IServiceRacaAnimal racaService,
                                       IServiceEstado estadoService,
@@ -49,6 +50,7 @@ namespace CadeMeuPet.MVC.Controllers
             _FotosService = fotosService;
             _AnimalComponent = new AnimalComponent(especieService, racaService, estadoService, cidadeService, corAnimalService, porteAnimalService, animalService, fotosService);
             _UrlPath = new UrlPath();
+            _Mapper = new MapperUtil();
         }
 
         #region .: Actions :.
@@ -70,15 +72,64 @@ namespace CadeMeuPet.MVC.Controllers
         [HttpGet]
         public ActionResult Editar(int AnimalId)
         {
+            TempData["AnimalId"] = AnimalId;
+
             Animal objAnimal = _AnimalService.GetById(AnimalId);
             CarregaCombos();
-            var config = new MapperConfiguration(c => c.CreateMap<Animal, AnimalViewModel>());
-            IMapper iMapper = config.CreateMapper();
 
-            var animalViewModel = iMapper.Map<Animal, AnimalViewModel> (objAnimal);
+            var animalViewModel = _Mapper.MapperAnimalViewModel(objAnimal);
             animalViewModel = CarregarListasViewModel(animalViewModel);
             
             return View(animalViewModel);
+        }
+
+        [HttpPost]
+        public JsonResult Editar(AnimalViewModel animalViewModel)
+        {
+            string _msgRetorno = string.Empty;
+            string _Retorno = string.Empty;
+            var AnimalId = TempData["AnimalId"];
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    animalViewModel.AnimalId = (int)AnimalId;
+                    var objAnimal = _Mapper.MapperAnimal(animalViewModel);
+
+                    _AnimalService.EditarPet(objAnimal);
+
+                    _msgRetorno = "Informações alteradas com sucesso.";
+                    _Retorno = "sucesso";
+                }
+                else
+                {
+                    _Retorno = "erro";
+                    _msgRetorno = "Antes de anexar, preencha os campos obrigatórios";
+                }
+
+                var resultado = new
+                {
+                    retorno = _Retorno,
+                    msgRetorno = _msgRetorno
+                };
+
+                return Json(resultado, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                _Retorno = "erro";
+                _msgRetorno = "Houve um erro ao tentar salvar. Por favor tente novamente." + ex.Message;
+
+                var resultado = new
+                {
+                    retorno = _Retorno,
+                    msgRetorno = _msgRetorno
+                };
+
+                return Json(resultado, JsonRequestBehavior.AllowGet);
+            }
+
+            
         }
 
         [HttpPost]
@@ -131,11 +182,8 @@ namespace CadeMeuPet.MVC.Controllers
             {
                 Usuario objUsuario = new Usuario();
                 objUsuario.Nome = User.Identity.Name;
-
-                var config = new MapperConfiguration(c => c.CreateMap<AnimalViewModel, Animal>());
-                IMapper iMapper = config.CreateMapper();
-
-                var objAnimal = iMapper.Map<AnimalViewModel, Animal>(animalViewModel);
+                
+                var objAnimal = _Mapper.MapperAnimal(animalViewModel);
 
                 objUsuario = _UsuarioService.DadosUsuario(objUsuario);
                 objAnimal.UsuarioId = objUsuario.UsuarioId;

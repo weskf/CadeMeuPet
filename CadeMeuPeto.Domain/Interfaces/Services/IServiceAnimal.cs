@@ -6,5 +6,6 @@ namespace CadeMeuPet.Domain.Interfaces.Services
     {
         Animal CadastrarPet(Animal objAnimal);
         void ExcluirPet(int AnimalId);
+        void EditarPet(Animal objAnimal);
     }
 }

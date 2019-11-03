@@ -201,6 +201,7 @@
     <Compile Include="Model\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\AnimalViewModel.cs" />
+    <Compile Include="Util\MapperUtil.cs" />
     <Compile Include="Util\UrlPath.cs" />
   </ItemGroup>
   <ItemGroup>
