@@ -45,14 +45,13 @@ namespace CadeMeuPet.Domain.Services
             _objAnimal.Identificacao = objAnimal.Identificacao;
             _objAnimal.Caracteristica = objAnimal.Caracteristica;
             _objAnimal.Ativo = objAnimal.Ativo;
-
-            var _localizacao = new Localizacao();
-            _localizacao.Bairro = objAnimal.Localizacao.Bairro;
-            _localizacao.Logradouro = objAnimal.Localizacao.Logradouro;
-            _localizacao.EstadoId = objAnimal.Localizacao.EstadoId;
-            _localizacao.CidadeId = objAnimal.Localizacao.CidadeId;
+            _objAnimal.Localizacao.Bairro = objAnimal.Localizacao.Bairro;
+            _objAnimal.Localizacao.Logradouro = objAnimal.Localizacao.Logradouro;
+            _objAnimal.Localizacao.EstadoId = objAnimal.Localizacao.EstadoId;
+            _objAnimal.Localizacao.CidadeId = objAnimal.Localizacao.CidadeId;
 
             _AnimalRepository.Update(_objAnimal);
+            
         }
     }
 }

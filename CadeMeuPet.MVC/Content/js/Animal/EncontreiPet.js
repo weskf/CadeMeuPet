@@ -173,12 +173,46 @@ function SalvarEdicaoPet() {
                     UploadFiles();
                 }
                 else {
-                    bootbox.alert(resultado.msgRetorno);
-                    window.location.href = "/EncontreiPet/Index";
+
+                    bootbox.confirm({
+                        message: resultado.msgRetorno,
+                        buttons: {
+                            confirm: {
+                                label: 'Ok',
+                                className: 'btn btn-outline-success'
+                            },
+                        },
+                        callback: function (result) {
+                            if (result) {
+                                window.location.href = "/EncontreiPet/Index";
+                            }
+                            
+                        }
+                    });
                 }
-             }
+            }
             else {
                 bootbox.alert(resultado.msgRetorno);
+            }
+        }
+    });
+}
+
+function ExcluirImagemPet(btn) {
+    var _DescricaoPet = btn.id;
+
+    $.ajax({
+        url: "/EncontreiPet/RemoverImagemPet",
+        type: 'POST',
+        dataType: "json",
+        async: false,
+        data: { descricaoPet: _DescricaoPet },
+        success: function (resultado) {
+            if (resultado.retorno == "sucesso") {
+                location.reload();
+            }
+            else {
+                bootbox.alert(resultado.message);
             }
         }
     });
@@ -246,6 +280,10 @@ $(document).ready(function () {
 
     $("#btn-anexar").click(function () {
         $("#fileUpload").removeAttr('hidden', 'hidden');
+    });
+
+    $("#btn-excluir-img").click(function () {
+        SalvarEdicaoPet();
     });
 
     PreencheNomeArquivoUpload();

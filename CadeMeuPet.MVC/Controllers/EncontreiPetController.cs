@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using CadeMeuPet.Domain.Componente;
+﻿using CadeMeuPet.Domain.Componente;
 using CadeMeuPet.Domain.Entities;
 using CadeMeuPet.Domain.Interfaces.Services;
 using CadeMeuPet.MVC.Util;
 using CadeMeuPet.MVC.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -89,6 +87,7 @@ namespace CadeMeuPet.MVC.Controllers
             string _msgRetorno = string.Empty;
             string _Retorno = string.Empty;
             var AnimalId = TempData["AnimalId"];
+            TempData.Keep();
             try
             {
                 if(ModelState.IsValid)
@@ -211,11 +210,12 @@ namespace CadeMeuPet.MVC.Controllers
         [HttpPost]
         public ActionResult UploadFile()
         {
-            var AnimalId = (int)TempData["AnimalId"];
+            var AnimalId = TempData["AnimalId"];
+            TempData.Keep();
 
             try
             {
-                int totalImagens = CriarDiretorioImagens(AnimalId);
+                int totalImagens = CriarDiretorioImagens((int)AnimalId);
 
                 return Json(new { success = "s", message = totalImagens + " Imagem(ns) Salva(s)." }, JsonRequestBehavior.AllowGet);
             }
@@ -224,28 +224,74 @@ namespace CadeMeuPet.MVC.Controllers
                 return Json(new { success = "n", message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-        
+
         [HttpPost]
-        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> fileData)
+        public JsonResult RemoverImagemPet(string descricaoPet)
         {
-            var animalId = ViewBag.AnimalId;
-            foreach (var file in fileData)
+            var animalId = TempData["AnimalId"];
+            string _msgRetorno = string.Empty;
+            string _Retorno = string.Empty;
+
+            try
             {
-                string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                string urlPath = "~/Imagens/Upload/" + animalId;
-                file.SaveAs(Path.Combine(Server.MapPath(urlPath), filePath));
+                string urlPath = _UrlPath.RetornaUrlPet((int)animalId);
+                string path = Server.MapPath(urlPath);
 
-                Fotos objFoto = new Fotos();
-                objFoto.AnimalId = animalId;
-                objFoto.CaminhoFoto = urlPath;
-                objFoto.DescricaoFoto = file.FileName;
-                _FotosService.Add(objFoto);
+                string[] files = Directory.GetFiles(path);
+                foreach(var item in files)
+                {
+                    var file = item.Remove(0, item.LastIndexOf("\\", item.Length) + 1);
+
+                    if(descricaoPet == file)
+                    {
+                        System.IO.File.Delete(item);
+                        _FotosService.RemoverFotoPet(descricaoPet);
+                    }
+                }
+
+                var resultado = new
+                {
+                    retorno = "sucesso",
+                    message = "Imagem excluída."
+                };
+
+                return Json(resultado, JsonRequestBehavior.AllowGet);
             }
+            catch(Exception ex)
+            {
 
-            var viewModel = _FotosService.FotosPorAnimal(animalId);
-            return Json("Arquivo anexados com sucesso", JsonRequestBehavior.AllowGet);
+                var resultado = new
+                {
+                    retorno = "erro",
+                    message = "Houve um erro ao tentar excluir a imagem: " + ex.Message
+                };
+
+                return Json(resultado, JsonRequestBehavior.AllowGet);
+            }
+            
         }
-        
+
+        //[HttpPost]
+        //public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> fileData)
+        //{
+        //    var animalId = ViewBag.AnimalId;
+        //    foreach (var file in fileData)
+        //    {
+        //        string filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //        string urlPath = "~/Imagens/Upload/" + animalId;
+        //        file.SaveAs(Path.Combine(Server.MapPath(urlPath), filePath));
+
+        //        Fotos objFoto = new Fotos();
+        //        objFoto.AnimalId = animalId;
+        //        objFoto.CaminhoFoto = urlPath;
+        //        objFoto.DescricaoFoto = file.FileName;
+        //        _FotosService.Add(objFoto);
+        //    }
+
+        //    var viewModel = _FotosService.FotosPorAnimal(animalId);
+        //    return Json("Arquivo anexados com sucesso", JsonRequestBehavior.AllowGet);
+        //}
+
         #endregion
 
         #region .: Metodos Auxiliares :.
@@ -336,6 +382,7 @@ namespace CadeMeuPet.MVC.Controllers
             Directory.Delete(path, true);
         }
 
+        
         #endregion
     }
 }

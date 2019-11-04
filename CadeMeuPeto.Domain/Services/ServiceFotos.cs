@@ -19,5 +19,12 @@ namespace CadeMeuPet.Domain.Services
         {
             return _RepositoryFotos.GetAll().Where(x => x.AnimalId == animalId).ToList();
         }
+
+        public void RemoverFotoPet(string descricaoPet)
+        {
+            Fotos objFoto = new Fotos();
+            objFoto = _RepositoryFotos.GetAll().Where(x => x.DescricaoFoto == descricaoPet).FirstOrDefault();
+            _RepositoryFotos.Remove(objFoto);
+        }
     }
 }

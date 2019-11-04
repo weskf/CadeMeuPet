@@ -92,8 +92,8 @@
                     @foreach(var fotos in Model.FotosList)
                     {
                         <td style="max-width: 200px; max-height: 200px">
-                            <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.AnimalId">
-                            <button type="button" id="excluir" name="excluir" class="btn btn-danger">Excluir</button>
+                            <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.DescricaoFoto">
+                            <button type="button" id="@fotos.DescricaoFoto" name="btnExcluir_@fotos.AnimalId" class="btn btn-danger" onclick="ExcluirImagemPet(this);">Excluir</button>
                         </td>
                     }
                 </tr>
