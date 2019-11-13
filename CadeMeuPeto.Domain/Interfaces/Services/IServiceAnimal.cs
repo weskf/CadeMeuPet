@@ -1,4 +1,5 @@
 ﻿using CadeMeuPet.Domain.Entities;
+using CadeMeuPet.MVC.ViewModel;
 
 namespace CadeMeuPet.Domain.Interfaces.Services
 {
@@ -7,5 +8,6 @@ namespace CadeMeuPet.Domain.Interfaces.Services
         Animal CadastrarPet(Animal objAnimal);
         void ExcluirPet(int AnimalId);
         void EditarPet(Animal objAnimal);
+        AnimalViewModel Filter(AnimalViewModel filter);
     }
 }

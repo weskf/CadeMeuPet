@@ -10,11 +10,12 @@
     <script src="~/Scripts/jquery.mask.min.js"></script>
     <script src="~/Scripts/bootbox.js"></script>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/jquery.filedrop.js"></script> 
+    <script src="~/Scripts/jquery.filedrop.js"></script>
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/CadeMeuPet.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/icons/css/all.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-menu">
@@ -25,9 +26,9 @@
         </div>
         <div class="collapse navbar-collapse">
             <div class="navbar-nav">
-                |<a class="nav-item nav-link-menu" href="/EncontreiPet/Index"> Encontrei um Pet</a>|
-                |<a class="nav-item nav-link-menu" href="/CadeMeuPet/Index">Cade meu Pet</a>|
-                |<a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">Contato</a>|
+                |<span class="fa fa-paw"><a class="nav-item nav-link-menu" href="/EncontreiPet/Index"> Encontrei um Pet</a></span>|
+                |<span class="fa fa-dog"><a class="nav-item nav-link-menu" href="/CadeMeuPet/Index">Cadê meu Pet ?</a></span>|
+                |<span class="fa fa-phone"><a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">Contato</a></span>|
             </div>
         </div>
         <ul class="nav navbar-nav navbar-right navbar-menu">
@@ -44,7 +45,7 @@
                     }
                 </a>
             </li>
-            <li><a class="nav-item nav-link-menu" href="@Url.Action("Logout","Account")"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+            <li><a class="nav-item nav-link-menu" href="@Url.Action("Logout","Account")"><span class="fas fas-user"></span> Sair</a></li>
         </ul>
     </nav>
     <div class="container">
