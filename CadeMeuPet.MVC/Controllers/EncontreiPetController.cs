@@ -15,42 +15,43 @@ namespace CadeMeuPet.MVC.Controllers
 {
     public class EncontreiPetController : Controller
     {
-        private readonly IServiceEspecieAnimal _EspecieService;
-        private readonly IServiceEstado _EstadoService;
-        private readonly IServiceCidade _CidadeService;
-        private readonly IServiceRacaAnimal _RacaService;
-        private readonly IServiceCorAnimal _CorService;
-        private readonly IServicePorteAnimal _PorteService;
-        private readonly IServiceAnimal _AnimalService;
-        private readonly IServiceUsuario _UsuarioService;
-        private readonly IServiceFotos _FotosService;
-        private AnimalComponent _AnimalComponent;
-        private UrlPath _UrlPath;
-        private MapperUtil _Mapper;
-        public EncontreiPetController(IServiceEspecieAnimal especieService,
-                                      IServiceRacaAnimal racaService,
-                                      IServiceEstado estadoService,
+        public readonly IServiceEstado _EstadoService;
+        public readonly IServiceCidade _CidadeService;
+        public readonly IServiceEspecieAnimal _EspecieService;
+        public readonly IServiceRacaAnimal _RacaService;
+        public readonly IServiceCorAnimal _CorService;
+        public readonly IServicePorteAnimal _PorteService;
+        public readonly IServiceAnimal _AnimalService;
+        public readonly IServiceUsuario _UsuarioService;
+        public readonly IServiceFotos _FotosService;
+
+        public AnimalComponent _AnimalComponent;
+        public UrlPath _UrlPath;
+        public MapperUtil _Mapper;
+
+        public EncontreiPetController(IServiceEstado estadoService,
                                       IServiceCidade cidadeService,
+                                      IServiceEspecieAnimal especieService,
+                                      IServiceRacaAnimal racaService,
                                       IServiceCorAnimal corAnimalService,
                                       IServicePorteAnimal porteAnimalService,
                                       IServiceAnimal animalService,
                                       IServiceUsuario usuarioService,
                                       IServiceFotos fotosService)
         {
-            _EspecieService = especieService;
             _EstadoService = estadoService;
             _CidadeService = cidadeService;
+            _EspecieService = especieService;
             _RacaService = racaService;
             _CorService = corAnimalService;
             _PorteService = porteAnimalService;
             _AnimalService = animalService;
             _UsuarioService = usuarioService;
             _FotosService = fotosService;
-            _AnimalComponent = new AnimalComponent(especieService, racaService, estadoService, cidadeService, corAnimalService, porteAnimalService, animalService, fotosService);
             _UrlPath = new UrlPath();
             _Mapper = new MapperUtil();
+            _AnimalComponent = new AnimalComponent(especieService, racaService, estadoService, cidadeService, corAnimalService, porteAnimalService, animalService, fotosService);
         }
-
         #region .: Actions :.
 
         public ActionResult Index()

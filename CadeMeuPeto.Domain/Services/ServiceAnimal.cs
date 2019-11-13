@@ -1,6 +1,7 @@
 ﻿using CadeMeuPet.Domain.Entities;
 using CadeMeuPet.Domain.Interfaces;
 using CadeMeuPet.Domain.Interfaces.Services;
+using CadeMeuPet.MVC.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,6 +53,20 @@ namespace CadeMeuPet.Domain.Services
 
             _AnimalRepository.Update(_objAnimal);
             
+        }
+
+        public AnimalViewModel Filter(AnimalViewModel filter)
+        {
+            AnimalViewModel obj = new AnimalViewModel();
+            //var obj = _AnimalRepository.GetAll();
+
+            
+            //if(!string.IsNullOrWhiteSpace(filter.Caracteristica))
+            //{
+            //    obj = _AnimalRepository.GetAll();
+            //}
+
+            return obj;
         }
     }
 }

@@ -5,32 +5,70 @@
 
 <div class="container">
     <div class="panel panel-body">
-        <div class="row">
-            <div class="col-md-3">
-                <button type="button" id="btn-cadastrar" class="btn btn-primary">Cadastrar</button>
-            </div>
-        </div>
+        @*<div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-success" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapse">
+                    <span class="fa fa-search"> Abrir Filtro</span>
+                </button>
+            </div>*@
     </div>
     <hr />
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="card">
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-3">
-                    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" placeholder="Pesquisar por características do Pet" id="inp-pesquisar" name="inp-pesquisar" class="form-control" />
+                        <span class="input-group-append">
+                            <button class="fa fa-search" style="background-color:darkgreen;border:none"></button>
+                        </span>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.DropDownList("Estado", null, "Selecione", htmlAttributes: new { @id = "Estado", @required = "required", @class = "custom-select selectpicker", data_show_subtext = "true", data_live_search = "true" })
                 </div>
-                <div class="col-md-3">
-                    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                <div class="form-group col-md-3">
+                    <select id="Cidade" class="custom-select">
+                        <option selected="selected" value="">Cidade</option>
+                    </select>
                 </div>
-                <div class="col-md-3">
-                    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                <div class="form-group col-md-6">
+                    <input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.DropDownList("Especie", null, "Especie", htmlAttributes: new { @required = "required", @class = "custom-select" })
+                </div>
+                <div class="form-group col-md-3">
+                    <select id="Raca" class="custom-select">
+                        <option selected="selected" value="Raça">Raça</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.DropDownList("Cor", null, "Cor", htmlAttributes: new { @required = "required", @class = "custom-select" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.DropDownList("Porte", null, "Porte", htmlAttributes: new { @required = "required", @class = "custom-select" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="button" value="Pesquisar" id="inputFile" class="btn btn-outline-success" />
+                    <input type="button" value="Limpar Filtro" id="inputFile" class="btn btn-outline-secondary" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+<hr />
+<div class="panel panel-default">
+
+</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/CadeMeuPet/Index.js"></script>
+<script src="~/Scripts/app/CadeMeuPet/Index.js"></script>
