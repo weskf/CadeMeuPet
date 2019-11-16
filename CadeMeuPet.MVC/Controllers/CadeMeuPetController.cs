@@ -1,4 +1,5 @@
 ﻿using CadeMeuPet.Domain.Componente;
+using CadeMeuPet.Domain.Entities;
 using CadeMeuPet.Domain.Interfaces.Services;
 using CadeMeuPet.MVC.Util;
 using CadeMeuPet.MVC.ViewModel;
@@ -68,10 +69,16 @@ namespace CadeMeuPet.MVC.Controllers
 
         public ActionResult Filtro(AnimalViewModel filter)
         {
+            IEnumerable<Animal> entities = _AnimalService.Filter(filter);
+            List<AnimalViewModel> lstAnimalViewModel = new List<AnimalViewModel>();
 
-            AnimalViewModel model = _AnimalService.Filter(filter);
-
-            return PartialView("_Filtro");
+            foreach(var entity in entities)
+            {
+                var model = _Mapper.MapperAnimalViewModel(entity);
+                lstAnimalViewModel.Add(model);
+            }
+           
+            return PartialView("_Filtro", lstAnimalViewModel);
         }
 
         #endregion
@@ -96,6 +103,15 @@ namespace CadeMeuPet.MVC.Controllers
         {
             var jsonSerializer = new JavaScriptSerializer();
             var ListCidade = _CidadeService.BuscarCidadePorEstado(EstadoId);
+
+            Cidade objCidade = new Cidade()
+            {
+                CidadeId = 0,
+                NomeCidade = "-- Selecione --"
+            };
+
+            ListCidade.Add(objCidade);
+            ListCidade.Sort((x, y) => string.Compare(x.NomeCidade, y.NomeCidade));
 
             return Json(ListCidade);
         }

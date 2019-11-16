@@ -55,18 +55,36 @@ namespace CadeMeuPet.Domain.Services
             
         }
 
-        public AnimalViewModel Filter(AnimalViewModel filter)
+        public IEnumerable<Animal> Filter(AnimalViewModel filter)
         {
-            AnimalViewModel obj = new AnimalViewModel();
-            //var obj = _AnimalRepository.GetAll();
-
             
-            //if(!string.IsNullOrWhiteSpace(filter.Caracteristica))
-            //{
-            //    obj = _AnimalRepository.GetAll();
-            //}
+            var lstAnimal = _AnimalRepository.GetAll();
 
-            return obj;
+            if(!string.IsNullOrWhiteSpace(filter.Caracteristica))
+                lstAnimal = lstAnimal.Where(x => x.Caracteristica.Contains(filter.Caracteristica));
+            
+            if(filter.Localizacao.EstadoId != 0)
+                lstAnimal = lstAnimal.Where(x => x.Localizacao.EstadoId == filter.Localizacao.EstadoId);
+
+            if(filter.Localizacao.CidadeId != 0)
+                lstAnimal = lstAnimal.Where(x => x.Localizacao.CidadeId == filter.Localizacao.CidadeId);
+
+            if(string.IsNullOrEmpty(filter.Localizacao.Bairro))
+                lstAnimal = lstAnimal.Where(x => x.Localizacao.Bairro.Contains(filter.Localizacao.Bairro));
+
+            if(filter.EspecieAnimalId != 0)
+                lstAnimal = lstAnimal.Where(x => x.EspecieAnimalId == filter.EspecieAnimalId);
+
+            if(filter.RacaAnimalId != 0)
+                lstAnimal = lstAnimal.Where(x => x.RacaAnimalId == filter.RacaAnimalId);
+
+            if(filter.PorteAnimalId != 0)
+                lstAnimal = lstAnimal.Where(x => x.PorteAnimalId == filter.PorteAnimalId);
+
+            if(filter.CorAnimalId != 0)
+                lstAnimal = lstAnimal.Where(x => x.CorAnimalId == filter.CorAnimalId);
+
+            return lstAnimal;
         }
     }
 }

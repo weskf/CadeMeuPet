@@ -1,17 +1,11 @@
-﻿@{
+﻿@model IEnumerable<CadeMeuPet.MVC.ViewModel.AnimalViewModel>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
-    <div class="panel panel-body">
-        @*<div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-sm btn-success" data-toggle="collapse" href="#collapseFilter" role="button" aria-expanded="false" aria-controls="collapse">
-                    <span class="fa fa-search"> Abrir Filtro</span>
-                </button>
-            </div>*@
-    </div>
+    <h1 class="text-tittle-page">Cadê meu pet ?</h1>
     <hr />
     <div class="card">
         <div class="card-body">
@@ -58,17 +52,28 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="button" value="Pesquisar" id="inputFile" class="btn btn-outline-success" />
-                    <input type="button" value="Limpar Filtro" id="inputFile" class="btn btn-outline-secondary" />
+                    <button type="button" id="btn-filter" class="btn btn-outline-success fa fa-search" onclick="Filtro();">
+                        <span class="col-form-label-sm">Pesquisar</span>
+                    </button>
+                    <button type="button" value="Limpar Filtro" id="btn-cleanFilter" class="btn btn-outline-secondary fa fa-broom">
+                        <span class="col-form-label-sm">Limpar Filtro</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <hr />
-<div class="panel panel-default">
-
+<div class="alert alert-success" role="alert" hidden="hidden" id="dv-success">
+    Busca realizada com sucesso!
 </div>
+<div class="alert alert-danger" role="alert" hidden="hidden" id="dv-error">
+    Houve um erro ao realizar a busca.
+</div>
+
+@*<div class="panel panel-default">
+    @Html.Partial("_GridCadeMeuPet", Model));
+</div>*@
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/app/CadeMeuPet/Index.js"></script>
