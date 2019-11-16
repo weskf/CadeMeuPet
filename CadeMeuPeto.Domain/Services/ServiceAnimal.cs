@@ -58,7 +58,7 @@ namespace CadeMeuPet.Domain.Services
         public IEnumerable<Animal> Filter(AnimalViewModel filter)
         {
             
-            var lstAnimal = _AnimalRepository.GetAll();
+            var lstAnimal = _AnimalRepository.GetAll().Where(x => x.Ativo == true);
 
             if(!string.IsNullOrWhiteSpace(filter.Caracteristica))
                 lstAnimal = lstAnimal.Where(x => x.Caracteristica.Contains(filter.Caracteristica));
@@ -69,7 +69,7 @@ namespace CadeMeuPet.Domain.Services
             if(filter.Localizacao.CidadeId != 0)
                 lstAnimal = lstAnimal.Where(x => x.Localizacao.CidadeId == filter.Localizacao.CidadeId);
 
-            if(string.IsNullOrEmpty(filter.Localizacao.Bairro))
+            if(!string.IsNullOrEmpty(filter.Localizacao.Bairro))
                 lstAnimal = lstAnimal.Where(x => x.Localizacao.Bairro.Contains(filter.Localizacao.Bairro));
 
             if(filter.EspecieAnimalId != 0)

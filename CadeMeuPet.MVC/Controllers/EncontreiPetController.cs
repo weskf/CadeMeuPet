@@ -336,7 +336,7 @@ namespace CadeMeuPet.MVC.Controllers
             animalViewModel.PorteList = _AnimalComponent.PorteList;
             animalViewModel.EstadoList = _AnimalComponent.EstadoList;
             animalViewModel.CidadeList = _AnimalComponent.CidadeList;
-            animalViewModel.FotosList = _AnimalComponent.FotosList.Where(x => x.AnimalId.Equals(animalViewModel.AnimalId));
+            animalViewModel.Fotos = _AnimalComponent.FotosList.Where(x => x.AnimalId.Equals(animalViewModel.AnimalId));
 
             List<SelectListItem> lstIdentificacao = new List<SelectListItem>
             {

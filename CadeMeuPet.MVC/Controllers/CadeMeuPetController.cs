@@ -21,7 +21,7 @@ namespace CadeMeuPet.MVC.Controllers
         private readonly IServiceAnimal _AnimalService;
         private readonly IServiceUsuario _UsuarioService;
         private readonly IServiceFotos _FotosService;
-        
+
         private AnimalComponent _AnimalComponent;
         private UrlPath _UrlPath;
         private MapperUtil _Mapper;
@@ -54,19 +54,11 @@ namespace CadeMeuPet.MVC.Controllers
 
         public ActionResult Index()
         {
-            var usuarioID = TempData["UsuarioID"];
-            TempData.Keep("UsuarioID");
-
-            if(!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
-            else
-            {
-                CarregaCombos();
-                return View();
-            }
+            CarregaCombos();
+            return View();
         }
 
-
+        [HttpPost]
         public ActionResult Filtro(AnimalViewModel filter)
         {
             IEnumerable<Animal> entities = _AnimalService.Filter(filter);
@@ -77,8 +69,10 @@ namespace CadeMeuPet.MVC.Controllers
                 var model = _Mapper.MapperAnimalViewModel(entity);
                 lstAnimalViewModel.Add(model);
             }
-           
-            return PartialView("_Filtro", lstAnimalViewModel);
+
+            CarregaCombos();
+
+            return View("Index", lstAnimalViewModel);
         }
 
         #endregion
@@ -97,7 +91,7 @@ namespace CadeMeuPet.MVC.Controllers
             ViewData["Porte"] = new SelectList(_PorteService.GetAll(), "PorteAnimalId", "Porte");
             ViewData["Identificacao"] = lstIdentificacao;
         }
-        
+
         [HttpPost]
         public JsonResult RetornaCidadePorEstado(int EstadoId)
         {
@@ -121,6 +115,15 @@ namespace CadeMeuPet.MVC.Controllers
         {
             var jsonSerializer = new JavaScriptSerializer();
             var ListRaca = _RacaService.RetornaRacaPorEspecie(EspecieId);
+
+            RacaAnimal objRaca = new RacaAnimal()
+            {
+                RacaAnimalId = 0,
+                Raca = "-- Selecione --"
+            };
+
+            ListRaca.Add(objRaca);
+            ListRaca.Sort((x, y) => string.Compare(x.Raca, y.Raca));
 
             return Json(ListRaca);
         }

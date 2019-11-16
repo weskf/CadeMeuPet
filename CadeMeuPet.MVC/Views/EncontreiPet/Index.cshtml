@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CadeMeuPet.Domain.Entities.Animal>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Encontrei um Pet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
@@ -16,6 +16,7 @@
                     </button>
                 </div>
             </div>
+            <hr />
             <div class="row">
                 <div class="form-group col-md-12">
                     <span class="text-tittle-page">Pets Cadastrados</span>
@@ -28,7 +29,7 @@
                             <tr>
                                 @if(Model.ToList().Count > 0)
                                 {
-                                    foreach(var animal in Model.Where(x => x.Fotos.Count > 0))
+                                    foreach(var animal in Model.Where(x => x.Fotos.Count() > 0))
                                     {
                                         var i = 0;
                                         <td style="max-width: 200px; max-height: 200px" class="animal-td">
@@ -78,7 +79,5 @@
     </div>
 </div>
 
-
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-@*<script src="~/Scripts/app/EncontreiPet/EncontreiPet.js"></script>*@
 <script src="~/Scripts/app/EncontreiPet/Index.js"></script>

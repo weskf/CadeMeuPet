@@ -63,19 +63,20 @@ function CarregaComboRaca() {
 function CriarObjetoPet() {
 
     var objLocalizacao = {
-            EstadoId: $("#Estado").val(),
-            CidadeId: $("#Cidade").val(),
-            Bairro: $("#bairro").val(),
-        }
+        EstadoId: $("#Estado").val(),
+        CidadeId: $("#Cidade").val(),
+        Bairro: $("#bairro").val(),
+        Logradouro: $("#logradouro").val(),
+    }
 
     var obj = {
-            EspecieAnimalId: $("#Especie").val(),
-            RacaAnimalId: $("#Raca").val(),
-            CorAnimalId: $("#Cor").val(),
-            PorteAnimalId: $("#Porte").val(),
-            Caracteristica: $("#inp-pesquisar").val(),
-            Localizacao: objLocalizacao,
-        }
+        EspecieAnimalId: $("#Especie").val(),
+        RacaAnimalId: $("#Raca").val(),
+        CorAnimalId: $("#Cor").val(),
+        PorteAnimalId: $("#Porte").val(),
+        Caracteristica: $("#inp-pesquisar").val(),
+        Localizacao: objLocalizacao,
+    }
 
     return obj;
 }
@@ -86,15 +87,15 @@ function Filtro() {
 
     $.ajax({
         url: "/CadeMeuPet/Filtro",
-        type: 'GET',
+        type: 'POST',
         async: false,
-        data: { animalViewModel: obj },
+        data: { filter: obj },
         success: function (resultado) {
             if (resultado.retorno == "sucesso") {
-                $("#dv-success").removeAttr("hidden");
+             //   $("#dv-success").removeAttr("hidden");
             }
             else {
-                $("#dv-error").removeAttr("hidden");
+              //  $("#dv-error").removeAttr("hidden");
             }
         }
     });

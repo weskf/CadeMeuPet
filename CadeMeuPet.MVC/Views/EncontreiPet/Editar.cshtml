@@ -10,15 +10,18 @@
         <div class="panel-body">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <span class="text-tittle-page">Cadastro de Pet Encontrado</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <input type="button" value="Voltar" id="btn-Voltar" class="btn btn-outline-primary" />
+                    <span class="text-tittle-page">Editar Pet Encontrado</span>
                 </div>
             </div>
             <hr />
+            <div class="form-row">
+                <div class="col-md-12">
+                    <a href="~/EncontreiPet/Index" value="Concluir" id="btn-voltar" class="btn btn-outline-primary fa fa-backward">
+                        <span class="col-form-label-sm">Voltar</span>
+                    </a>
+                </div>
+            </div>
+            <br />
             <div class="card">
                 <div class="card-body">
                     <div class="form-row">
@@ -96,11 +99,11 @@
                 <div class="form-row">
                     <table>
                         <tr>
-                            @foreach(var fotos in Model.FotosList)
+                            @foreach(var fotos in Model.Fotos)
                             {
                                 <td style="max-width: 200px; max-height: 200px">
                                     <img class="d-block img-thumbnail" style="width:200px;height:200px" src="@fotos.CaminhoFoto.Replace("\\", "/")" alt="@fotos.DescricaoFoto" name="@fotos.AnimalId" id="@fotos.DescricaoFoto">
-                                    <button type="button" id="@fotos.DescricaoFoto" name="btnExcluir_@fotos.AnimalId" class="btn btn-danger" onclick="ExcluirImagemPet(this);">Excluir</button>
+                                    <button type="button" id="@fotos.DescricaoFoto" name="btnExcluir_@fotos.AnimalId" class="btn btn-sm btn-outline-danger fa fa-trash" onclick="ExcluirImagemPet(this);" />
                                 </td>
                             }
                         </tr>
@@ -159,7 +162,9 @@
         <hr />
         <div class="row">
             <div class="col-md-3">
-                <input type="button" value="Salvar Alterações" id="btn-Editar" class="btn btn-outline-success" />
+                <button type="button" id="btn-Editar" class="btn btn-outline-success fa fa-save">
+                    <span class="col-form-label-sm">Salvar Alterações</span>
+                </button>
             </div>
         </div>
     </form>

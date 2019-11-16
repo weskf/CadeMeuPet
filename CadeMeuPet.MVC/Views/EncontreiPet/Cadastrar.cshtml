@@ -14,6 +14,14 @@
                 </div>
             </div>
             <hr />
+            <div class="form-row">
+                <div class="col-md-12">
+                    <a href="~/EncontreiPet/Index" value="Concluir" id="btn-voltar" class="btn btn-outline-primary fa fa-backward">
+                        <span class="col-form-label-sm">Voltar</span>
+                    </a>
+                </div>
+            </div>
+            <br />
             <div class="card">
                 <div class="card-body">
                     <div class="form-row">
@@ -54,7 +62,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Raça:</label>
-                            <select id="Raca" class="form-control">
+                            <select id="Raca" class="custom-select">
                                 <option selected="selected" value="">Raça</option>
                             </select>
                         </div>
@@ -86,7 +94,9 @@
         <div class="row">
             <div class="col-md-12">
                 <input hidden="hidden" id="AnimalId" name="AnimalId" value="@ViewBag.AnimalId" />
-                <button type="button" id="btn-salvar" class="btn btn-outline-success fa fa-upload" style="border-radius:50%"/>
+                <button type="button" id="btn-salvar" class="btn btn-outline-success fa fa-upload">
+                    <span class="col-form-label-sm">Upload Imagens</span>
+                </button>
             </div>
         </div>
         <div id="fileUpload" hidden="hidden">
@@ -134,7 +144,9 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" value="Concluir" id="inputFile" class="btn btn-outline-primary fa fa-save" style="border-radius:50%">Salvar</button>
+                    <button type="button" value="Concluir" id="inputFile" class="btn btn-outline-primary fa fa-save">
+                        <span class="col-form-label-sm">Salvar</span>
+                    </button>
                 </div>
             </div>
         </div>

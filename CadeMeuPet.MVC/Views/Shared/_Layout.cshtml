@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>@ViewBag.Title - Cadê Meu Pet ?</title>
+    <title>@ViewBag.Title</title>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -19,44 +19,44 @@
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-menu">
-            <div class="collapse navbar-collapse">
-                <div class="navbar-nav">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-item nav-link-menu" href="/EncontreiPet/Index">
-                                <span class="btn btn-sm btn-success">Encontrei um Pet</span> / 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item nav-link-menu" href="/CadeMeuPet/Index">
-                                <span class="btn btn-sm btn-success">Cadê meu Pet ?</span> /  
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">
-                                <span class="btn btn-sm btn-success">Contato</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="collapse navbar-collapse">
+            <div>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-item nav-link-menu" href="/CadeMeuPet/Index">
+                            <span class="btn btn-sm btn-outline-success" style="color: white">Cadê meu Pet ?</span> /
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link-menu" href="/EncontreiPet/Index">
+                            <span class="btn btn-sm btn-outline-success" style="color: white">Encontrei um Pet</span> /
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link-menu" href="/PerdiMeuPet/Index">
+                            <span class="btn btn-sm btn-outline-success" style="color: white">Contato</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav navbar-right navbar-menu">
-                <li>
-                    <a class="nav-item nav-link-menu" href="#" nav-item nav-link-menu>
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="glyphicon">Olá </span>
-                            @Html.Encode(User.Identity.Name);
-                        }
-                        else
-                        {
-                            <span class="fa fa-user"> Login </span>
-                        }
-                    </a>
-                </li>
-                <li><a class="nav-item nav-link-menu" href="@Url.Action("Logout","Account")"><span class="fa fa-door-open"></span> Sair</a></li>
-            </ul>
-        </nav>
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-menu">
+            <li>
+                <a class="nav-item nav-link-menu" href="#" nav-item nav-link-menu>
+                    @if(Request.IsAuthenticated)
+                    {
+                        <span class="glyphicon">Olá </span>
+                        @Html.Encode(User.Identity.Name);
+                    }
+                    else
+                    {
+                        <span class="fa fa-user"> Login </span>
+                    }
+                </a>
+            </li>
+            <li><a class="nav-item nav-link-menu" href="@Url.Action("Logout","Account")"><span class="fa fa-door-open"></span> Sair</a></li>
+        </ul>
+    </nav>
     @*<nav class="navbar fixed-top navbar-expand-lg navbar-menu">
             <div class="navbar-header">
                 <a href="/Home/Index">
@@ -92,8 +92,8 @@
         @RenderBody()
     </div>
 
-
-
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>
