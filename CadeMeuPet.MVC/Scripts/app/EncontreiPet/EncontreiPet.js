@@ -279,7 +279,7 @@ $(document).ready(function () {
     });
 
     $("#btn-Voltar").click(function () {
-        window.location.href = "/EncontreiPet/Index;
+        window.location.href = "/EncontreiPet/Index";
     });
 
     $("#btn-anexar").click(function () {

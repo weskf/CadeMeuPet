@@ -19,11 +19,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Estado:</label>
-                            @Html.DropDownList("Estado", null, "Selecione", htmlAttributes: new { @id = "Estado", @required = "required", @class = "form-control selectpicker", data_show_subtext = "true", data_live_search = "true" })
+                            @Html.DropDownList("Estado", null, "Selecione", htmlAttributes: new { @id = "Estado", @required = "required", @class = "custom-select", data_show_subtext = "true", data_live_search = "true" })
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Cidade:</label>
-                            <select id="Cidade" class="form-control">
+                            <select id="Cidade" class="custom-select">
                                 <option selected="selected" value="">Cidade</option>
                             </select>
                         </div>
@@ -50,7 +50,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Espécie:</label>
-                            @Html.DropDownList("Especie", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                            @Html.DropDownList("Especie", null, "Selecione", htmlAttributes: new { @required = "required", @class = "custom-select" })
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Raça:</label>
@@ -60,17 +60,17 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Cor:</label>
-                            @Html.DropDownList("Cor", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                            @Html.DropDownList("Cor", null, "Selecione", htmlAttributes: new { @required = "required", @class = "custom-select" })
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Porte:</label>
-                            @Html.DropDownList("Porte", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control" })
+                            @Html.DropDownList("Porte", null, "Selecione", htmlAttributes: new { @required = "required", @class = "custom-select" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label class="control-label" for="especie">Possui identificação ?</label>
-                            @Html.DropDownList("Identificacao", null, "Selecione", htmlAttributes: new { @required = "required", @class = "form-control", @id = "identificacao" })
+                            @Html.DropDownList("Identificacao", null, "Selecione", htmlAttributes: new { @required = "required", @class = "custom-select", @id = "identificacao" })
                         </div>
                     </div>
                     <div class="form-row">
@@ -85,8 +85,8 @@
         <hr />
         <div class="row">
             <div class="col-md-12">
-                <input hidden="hidden" id="AnimalId" name="AnimalId" value="@ViewBag.AnimalId"/>
-                <button type="button" id="btn-salvar" class="btn btn-outline-success">Anexar Imagens</button>
+                <input hidden="hidden" id="AnimalId" name="AnimalId" value="@ViewBag.AnimalId" />
+                <button type="button" id="btn-salvar" class="btn btn-outline-success fa fa-upload" style="border-radius:50%"/>
             </div>
         </div>
         <div id="fileUpload" hidden="hidden">
@@ -134,7 +134,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="button" value="Concluir" id="inputFile" class="btn btn-outline-primary" />        
+                    <button type="button" value="Concluir" id="inputFile" class="btn btn-outline-primary fa fa-save" style="border-radius:50%">Salvar</button>
                 </div>
             </div>
         </div>
@@ -142,8 +142,9 @@
     </form>
 </div>
 
-    <script src="~/Scripts/app/EncontreiPet/EncontreiPet.js"></script>
-    <script type="text/javascript">
+
+<script src="~/Scripts/app/EncontreiPet/EncontreiPet.js"></script>
+@*<script type="text/javascript">
         $(function () {
             $("#dropArea").filedrop({
                 url: '@Url.Action("UploadFiles")',
@@ -170,4 +171,4 @@
                 }
             })
         })
-    </script>
+    </script>*@
