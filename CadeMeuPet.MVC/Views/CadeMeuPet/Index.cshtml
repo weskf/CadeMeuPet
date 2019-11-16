@@ -1,6 +1,6 @@
-﻿@model IEnumerable<CadeMeuPet.MVC.ViewModel.AnimalViewModel>
+﻿@model List<CadeMeuPet.MVC.ViewModel.AnimalViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cadê Meu Pet?";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -52,7 +52,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" id="btn-filter" class="btn btn-outline-success fa fa-search" onclick="Filtro();">
+                    <button type="submit" id="btn-filter" class="btn btn-outline-success fa fa-search" onclick="Filtro();">
                         <span class="col-form-label-sm">Pesquisar</span>
                     </button>
                     <button type="button" value="Limpar Filtro" id="btn-cleanFilter" class="btn btn-outline-secondary fa fa-broom">
@@ -71,9 +71,13 @@
     Houve um erro ao realizar a busca.
 </div>
 
-@*<div class="panel panel-default">
-    @Html.Partial("_GridCadeMeuPet", Model));
-</div>*@
+<div class="card">
+    <div class="card-body">
+        @*@Html.RenderPartial("_GridCadeMeuPet");*@
+        @*@{ Html.RenderPartial("_GridCadeMeuPet", Model);}*@
+        @Html.Partial("_GridCadeMeuPet", Model)
+    </div>
+</div>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/app/CadeMeuPet/Index.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/app/CadeMeuPet/Index.js"></script>

@@ -25,6 +25,6 @@ namespace CadeMeuPet.MVC.ViewModel
 
         public IEnumerable<Estado> EstadoList { get; set; }
         public IEnumerable<Cidade> CidadeList { get; set; }
-        public IEnumerable<Fotos> FotosList { get; set; }
+        public IEnumerable<Fotos> Fotos { get; set; }
     }
 }
