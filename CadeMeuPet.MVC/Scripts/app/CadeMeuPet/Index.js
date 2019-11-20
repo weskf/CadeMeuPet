@@ -8,6 +8,10 @@
         CarregaComboRaca();
     });
 
+    $("#btn-help").on('click', function () {
+        $("#div-help").removeAttr('hidden');
+    })
+
 });
 
 function CarregaComboCidade() {
@@ -87,16 +91,15 @@ function Filtro() {
 
     $.ajax({
         url: "/CadeMeuPet/Filtro",
-        type: 'POST',
+        type: "POST",
         async: false,
         data: { filter: obj },
-        success: function (resultado) {
-            if (resultado.retorno == "sucesso") {
-             //   $("#dv-success").removeAttr("hidden");
-            }
-            else {
-              //  $("#dv-error").removeAttr("hidden");
-            }
+        success: function (data) {
+            $('#GridCadeMeuPet').html(data);
+        },
+        error: function (error) {
+            $("#dv-error").removeAttr('hidden');
+            console.log(error);
         }
     });
 }
