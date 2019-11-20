@@ -24,6 +24,7 @@
                             {
                                 var i = 0;
                                 <td style="width: 200px; height: 200px" class="animal-td">
+                                    <button type="button" id="btnDetalhe_@animal.AnimalId" name="btnDetalhe_@animal.AnimalId" class="btn btn-sm btn-outline-primay fa fa-info-circle" title="Informações" onclick="DetalhesPet(this);" />
                                     <div id="carouselId_@animal.AnimalId" class="carousel slide carousel-fade" data-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach(var fotos in animal.Fotos)
@@ -61,4 +62,11 @@
             </table>
         </div>
     </div>
+
+   
+    @*<div id="DetalheCadeMeuPet">
+        @{ Html.RenderPartial("_Detalhes");}
+    </div>*@
+
+     @Html.Partial("_Detalhes")
 </form>

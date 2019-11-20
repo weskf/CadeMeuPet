@@ -5017,8 +5017,8 @@
     <Content Include="Views\Account\Cadastrar.cshtml" />
     <Content Include="Views\EncontreiPet\UploadImagem.cshtml" />
     <Content Include="Views\EncontreiPet\Editar.cshtml" />
-    <Content Include="Views\CadeMeuPet\_GridCadeMeuPet.cshtml" />
-    <Content Include="Views\CadeMeuPet\_DetalhesCadeMeuPet.cshtml" />
+    <Content Include="Views\CadeMeuPet\_Grid.cshtml" />
+    <Content Include="Views\CadeMeuPet\_Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

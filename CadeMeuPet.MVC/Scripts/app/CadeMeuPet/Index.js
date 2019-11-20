@@ -10,9 +10,40 @@
 
     $("#btn-help").on('click', function () {
         $("#div-help").removeAttr('hidden');
-    })
+    });
 
 });
+
+function RetornaPetId(btn) {
+    var _AnimalId = btn.id;
+    var posInicio = _AnimalId.indexOf("_") + 1;
+    var posFim = _AnimalId.length;
+    return AnimalId = _AnimalId.substring(posInicio, posFim);
+}
+
+function DetalhesPet(btn) {
+    var _AnimalId = RetornaPetId(btn);
+
+    $.ajax({
+        url: "/CadeMeuPet/Detalhes",
+        type: "GET",
+        async: false,
+        data: { animalId: _AnimalId },
+        success: function (data) {
+
+           // $('#DetalheCadeMeuPet').html(data);
+
+            $('#PetModal').modal('show');
+            $('#PetModal').append(data);
+
+        },
+        error: function (error) {
+            $("#dv-error").removeAttr('hidden');
+            console.log("Erro ao carregar o filtro: " + error);
+        }
+    });
+}
+
 
 function CarregaComboCidade() {
 
@@ -94,12 +125,12 @@ function Filtro() {
         type: "POST",
         async: false,
         data: { filter: obj },
-        success: function (data) {
+        success: function (data) {          
             $('#GridCadeMeuPet').html(data);
         },
         error: function (error) {
             $("#dv-error").removeAttr('hidden');
-            console.log(error);
+            console.log("Erro ao carregar o filtro: " + error);
         }
     });
 }

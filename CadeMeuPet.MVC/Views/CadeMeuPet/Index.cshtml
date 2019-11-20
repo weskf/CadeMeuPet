@@ -13,8 +13,10 @@
             <div class="row" id="div-help" hidden="hidden">
                 <div class="col-md-12">
                     <div class="alert alert-warning" role="alert">
-                        <span class="col-form-label-sm">Para pesquisar por Pets perdidos, selecione a opção "Pet Perdido". 
-                        <br/>Para pesquisar por Pets encontrados, selecione a opção "Pet Encontrado"</span>
+                        <span class="col-form-label-sm">
+                            Para pesquisar por Pets perdidos, selecione a opção "Pet Perdido".
+                            <br />Para pesquisar por Pets encontrados, selecione a opção "Pet Encontrado"
+                        </span>
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@
 </div>
 
 <div id="GridCadeMeuPet">
-    @{ Html.RenderPartial("_GridCadeMeuPet", Model);}
+    @{ Html.RenderPartial("_Grid", Model);}
 </div>
 
 <script src="~/Scripts/app/CadeMeuPet/Index.js"></script>

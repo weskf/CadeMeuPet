@@ -4,6 +4,7 @@ using CadeMeuPet.Domain.Interfaces.Services;
 using CadeMeuPet.MVC.Util;
 using CadeMeuPet.MVC.ViewModel;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -59,24 +60,6 @@ namespace CadeMeuPet.MVC.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public JsonResult Filtro(AnimalViewModel filter)
-        //{
-        //    IEnumerable<Animal> entities = _AnimalService.Filter(filter);
-        //    List<AnimalViewModel> lstAnimalViewModel = new List<AnimalViewModel>();
-
-        //    foreach(var entity in entities)
-        //    {
-        //        var model = _Mapper.MapperAnimalViewModel(entity);
-        //        lstAnimalViewModel.Add(model);
-        //    }
-
-        //    //CarregaCombos();
-
-        //    var result = JsonConvert.SerializeObject(lstAnimalViewModel);
-
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
         [HttpPost]
         public ActionResult Filtro(AnimalViewModel filter)
         {
@@ -91,8 +74,26 @@ namespace CadeMeuPet.MVC.Controllers
 
            CarregaCombos();
 
-            return PartialView("_GridCadeMeuPet", lstAnimalViewModel);
+            return PartialView("_Grid", lstAnimalViewModel);
         }
+        
+        [HttpGet]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
+        public PartialViewResult Detalhes(int animalId)
+        {
+            try
+            {
+                var objAnimal = _AnimalService.GetById(animalId);
+                var model = _Mapper.MapperAnimalViewModel(objAnimal);
+
+                return PartialView("_Detalhes", model);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
         #endregion
 
         #region .: Metodos Auxiliares :.

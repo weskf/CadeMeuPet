@@ -1,28 +1,4 @@
-﻿//function ClickImg(obj) {
-//    var AnimalId = obj.id;
-
-//    bootbox.confirm({
-//        message: "Deseja 'Excluir' ou 'Editar' o cadastro do Pet ? ",
-//        buttons: {
-//            confirm: {
-//                label: 'Editar',
-//                className: 'btn btn-outline-warning'
-//            },
-//            cancel: {
-//                label: 'Excluir',
-//                className: 'btn btn-outline-danger'
-//            }
-//        },
-//        callback: function (result) {
-//            if (result) {
-//                EditarCadastroPet(AnimalId);
-//            } else {
-//                ExcluirCadastroPet(AnimalId);
-//            }
-//        }
-//    });
-//};
-
+﻿
 function EditarCadastroPet(btn) {
     var AnimalId = RetornaPetId(btn);
 
