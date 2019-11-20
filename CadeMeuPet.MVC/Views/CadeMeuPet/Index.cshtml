@@ -5,10 +5,33 @@
 }
 
 <div class="container">
-    <h1 class="text-tittle-page">Cadê meu pet ?</h1>
+    <h1 class="text-tittle-page">Busca de Pets</h1>
     <hr />
     <div class="card">
         <div class="card-body">
+            <span class="fa fa-question-circle" title="Ajuda" id="btn-help"></span>
+            <div class="row" id="div-help" hidden="hidden">
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        <span class="col-form-label-sm">
+                            Para pesquisar por Pets perdidos, selecione a opção "Pet Perdido".
+                            <br />Para pesquisar por Pets encontrados, selecione a opção "Pet Encontrado"
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="id-petEncontrado" autocomplete="off" checked> Pet Encontrado
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="id-PetPerdido" autocomplete="off"> Pet Perdido
+                        </label>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -58,26 +81,22 @@
                     <button type="button" value="Limpar Filtro" id="btn-cleanFilter" class="btn btn-outline-secondary fa fa-broom">
                         <span class="col-form-label-sm">Limpar Filtro</span>
                     </button>
+                    <button type="button" value="Cadastrar Meu Pet Perdido" id="btn-cadastroPetPerdido" class="btn btn-outline-primary fa fa-plus">
+                        <span class="col-form-label-sm">Cadastrar meu Pet perdido</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <hr />
-<div class="alert alert-success" role="alert" hidden="hidden" id="dv-success">
-    Busca realizada com sucesso!
-</div>
+
 <div class="alert alert-danger" role="alert" hidden="hidden" id="dv-error">
     Houve um erro ao realizar a busca.
 </div>
 
-<div class="card">
-    <div class="card-body">
-        @*@Html.RenderPartial("_GridCadeMeuPet");*@
-        @*@{ Html.RenderPartial("_GridCadeMeuPet", Model);}*@
-        @Html.Partial("_GridCadeMeuPet", Model)
-    </div>
+<div id="GridCadeMeuPet">
+    @{ Html.RenderPartial("_Grid", Model);}
 </div>
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/app/CadeMeuPet/Index.js"></script>
+<script src="~/Scripts/app/CadeMeuPet/Index.js"></script>

@@ -63,6 +63,9 @@ namespace CadeMeuPet.MVC.Controllers
                 return RedirectToAction("Login", "Account");
             else
             {
+                if(usuarioID == null)
+                    RedirectToAction("Login", "Account");
+
                 IEnumerable<Animal> AnimalViewModel = _UsuarioService.RetornaFotosAnimal((int)usuarioID);
                 return View(AnimalViewModel);
             }

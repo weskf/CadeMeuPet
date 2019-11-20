@@ -3,6 +3,8 @@ using CadeMeuPet.Domain.Entities;
 using CadeMeuPet.Domain.Interfaces.Services;
 using CadeMeuPet.MVC.Util;
 using CadeMeuPet.MVC.ViewModel;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -70,11 +72,28 @@ namespace CadeMeuPet.MVC.Controllers
                 lstAnimalViewModel.Add(model);
             }
 
-            CarregaCombos();
+           CarregaCombos();
 
-            return View("Index", lstAnimalViewModel);
+            return PartialView("_Grid", lstAnimalViewModel);
         }
+        
+        [HttpGet]
+        [OutputCache(Duration = 10, VaryByParam = "none")]
+        public PartialViewResult Detalhes(int animalId)
+        {
+            try
+            {
+                var objAnimal = _AnimalService.GetById(animalId);
+                var model = _Mapper.MapperAnimalViewModel(objAnimal);
 
+                return PartialView("_Detalhes", model);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
         #endregion
 
         #region .: Metodos Auxiliares :.

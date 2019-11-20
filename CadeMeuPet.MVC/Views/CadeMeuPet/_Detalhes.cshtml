@@ -1,0 +1,56 @@
+﻿@model CadeMeuPet.MVC.ViewModel.AnimalViewModel
+
+<div class="modal fade" id="PetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="nome">Nome:</label>
+                   @*     @Model.Usuario.Nome*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="Telefone">Telefone:</label>
+                        @*@Model.Usuario.Telefone*@
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="Email">Email:</label>
+                        @*@Model.Usuario.Email*@
+                    </div>
+                </div>
+                <hr />
+                <div class="alert alert-warning" role="alert">
+                    <span class="col-form-label-sm">Informações referentes à localização que o Pet foi encontrado</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label class="control-label" for="Endereco">Observações:</label>
+                        @*@Model.Caracteristica*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="Data">Data que o Pet foi encontrado:</label>
+                        @*@Model.Localizacao.DataLocalizacao*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label class="control-label" for="Endereco">Endereço:</label>
+                        @*@Model.Localizacao.Logradouro*@
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="control-label" for="Endereco">Bairro:</label>
+                        @*@Model.Localizacao.Bairro*@
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
